@@ -1,0 +1,65 @@
+{
+	"request-ok": "request is done succesfully",
+	"request-methodNotAllowed": "request has been rejected, method is not allowed",
+	"request-toomany": "too many request",
+	"payload-bad":   "invalid data structre",
+
+	"auth-required": "authentication required",
+	"auth-missingHeader": "authorization header is missing",
+	"auth-forbidden": "authorization forbidden",
+	"auth-login-success": "login success",
+	"auth-login-incorrect": "login failed, icorrect username or password",
+	"auth-login-tooMany": "login failed, too many login attempts",
+	"auth-login-blocked": "login failed, account is blocked",
+	"auth-login-unverified": "login failed, account is not verified",
+	"auth-logout-success": "logout success",
+	"auth-reject-suspend": "restricted for suspended account",
+
+	"emailConfirm-success": "email confirmation success",
+	"emailConfirm-fail": "failed to confirm email",
+	"emailConfirm-resend-fail": "failed to resend email confirmation",
+
+	"data-created": "data has been created",
+	"data-accepted": "data has been created",
+	"data-notFound": "data or resource can not be found",
+	"data-notFound-condition": "\"%v\" with %v \"%v\" can not be found",
+	"data-create-fail":   "failed to create data",
+	"data-update-fail":   "failed to update data",
+	"data-delete-fail":   "failed to delete data",
+	"data-delete-success":   "data has been deleted",
+	"data-fetch-fail":    "failed to fetch data",
+	"data-copy-fail":     "failed to copy data",
+	"data-process-fail":  "failed to process data",
+	"data-confirm-fail":  "failed to confirm data",
+	"data-generate-fail": "failed to generate data",
+	"data-registered":    "is already registered",
+	"data-state-mismatch": "\"%v\" is not in \"%v\" state",
+
+	"expired": "is expired",
+	"registered": "is already registered",
+	"mustUuid": "must be a valid uuid",
+	"invalid": "invalid value",
+	"equalToField": "must equal to",
+
+	"userToken-incorrect": "incorrect email, token, or token type",
+
+	"token-missing": "missing required token",
+	"token-invalid": "invalid token",
+	"token-invalidType": "invalid token type",
+	"token-sign-unexcpeted": "unexpected signing method: %v",
+	"token-sign-err": "token signing failed, %v",
+	"token-parse-fail": "token parsing failed, %v",
+	"token-expired": "token is expired",
+	"token-unidentified": "token is could not be identified",
+
+	"file-detect-fail": "file type detection failed",
+	"file-type-mismatch": "file type mismatch",
+	"file-create-fail": "failed to create file, %v",
+	"file-open-fail": "failed to open file, %v",
+	"file-copy-fail": "failed to copy file, %v",
+
+	"uuid-gen-fail" : "failed to generate uuid, %v",
+	"nanoid-gen-fail" : "failed to generate nanoid, %v",
+
+	"redis-store-fail": "redis storing value failed, %v"
+}

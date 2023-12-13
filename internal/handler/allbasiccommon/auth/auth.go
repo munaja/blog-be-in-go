@@ -8,8 +8,8 @@ import (
 	td "github.com/karincake/tempe/data"
 	te "github.com/karincake/tempe/error"
 
-	m "github.com/munaja/blog-be-in-go/internal/model/user"
-	s "github.com/munaja/blog-be-in-go/internal/service/auth"
+	m "github.com/munaja/blog-practice-be-using-go/internal/model/user"
+	s "github.com/munaja/blog-practice-be-using-go/internal/service/auth"
 )
 
 var Position m.Position

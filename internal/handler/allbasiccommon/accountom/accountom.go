@@ -6,9 +6,9 @@ import (
 	hh "github.com/karincake/apem/handlerhelper"
 	td "github.com/karincake/tempe/data"
 
-	m "github.com/munaja/blog-be-in-go/internal/model/user"
-	sac "github.com/munaja/blog-be-in-go/internal/service/account"
-	sau "github.com/munaja/blog-be-in-go/internal/service/auth"
+	m "github.com/munaja/blog-practice-be-using-go/internal/model/user"
+	sac "github.com/munaja/blog-practice-be-using-go/internal/service/account"
+	sau "github.com/munaja/blog-practice-be-using-go/internal/service/auth"
 )
 
 func ChangePassword(w http.ResponseWriter, r *http.Request) {

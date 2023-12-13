@@ -7,7 +7,7 @@ import (
 	l "github.com/karincake/apem/lang"
 
 	dg "github.com/karincake/apem/databasegorm"
-	m "github.com/munaja/blog-be-in-go/internal/model/user"
+	m "github.com/munaja/blog-practice-be-using-go/internal/model/user"
 	"gorm.io/gorm"
 )
 

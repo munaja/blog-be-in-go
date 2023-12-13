@@ -9,11 +9,11 @@ import (
 	te "github.com/karincake/tempe/error"
 	"gorm.io/gorm"
 
-	m "github.com/munaja/blog-be-in-go/internal/model/user"
-	mut "github.com/munaja/blog-be-in-go/internal/model/usertoken"
-	sut "github.com/munaja/blog-be-in-go/internal/service/usertoken"
-	p "github.com/munaja/blog-be-in-go/pkg/password"
-	sh "github.com/munaja/blog-be-in-go/pkg/servicehelper"
+	m "github.com/munaja/blog-practice-be-using-go/internal/model/user"
+	mut "github.com/munaja/blog-practice-be-using-go/internal/model/usertoken"
+	sut "github.com/munaja/blog-practice-be-using-go/internal/service/usertoken"
+	p "github.com/munaja/blog-practice-be-using-go/pkg/password"
+	sh "github.com/munaja/blog-practice-be-using-go/pkg/servicehelper"
 )
 
 const source = "user"

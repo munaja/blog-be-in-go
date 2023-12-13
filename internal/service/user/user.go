@@ -4,7 +4,7 @@ import (
 	dg "github.com/karincake/apem/databasegorm"
 	"gorm.io/gorm"
 
-	mu "github.com/munaja/blog-be-in-go/internal/model/user"
+	mu "github.com/munaja/blog-practice-be-using-go/internal/model/user"
 )
 
 func GetDetailByName(name string) (*mu.User, error) {

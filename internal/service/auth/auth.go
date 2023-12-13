@@ -16,10 +16,10 @@ import (
 	ms "github.com/karincake/apem/memstorageredis"
 	td "github.com/karincake/tempe/data"
 	te "github.com/karincake/tempe/error"
-	lh "github.com/munaja/blog-be-in-go/pkg/langhelper"
-	p "github.com/munaja/blog-be-in-go/pkg/password"
+	lh "github.com/munaja/blog-practice-be-using-go/pkg/langhelper"
+	p "github.com/munaja/blog-practice-be-using-go/pkg/password"
 
-	mu "github.com/munaja/blog-be-in-go/internal/model/user"
+	mu "github.com/munaja/blog-practice-be-using-go/internal/model/user"
 )
 
 //	type TokenDetails struct {

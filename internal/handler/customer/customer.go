@@ -6,12 +6,12 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 
-	"github.com/munaja/blog-be-in-go/internal/handler/allbasiccommon/account"
-	"github.com/munaja/blog-be-in-go/internal/handler/allbasiccommon/accountom"
-	"github.com/munaja/blog-be-in-go/internal/handler/allbasiccommon/auth"
-	er "github.com/munaja/blog-be-in-go/internal/handler/allbasiccommon/errors"
-	"github.com/munaja/blog-be-in-go/internal/handler/allbasiccommon/home"
-	mu "github.com/munaja/blog-be-in-go/internal/model/user"
+	"github.com/munaja/blog-practice-be-using-go/internal/handler/allbasiccommon/account"
+	"github.com/munaja/blog-practice-be-using-go/internal/handler/allbasiccommon/accountom"
+	"github.com/munaja/blog-practice-be-using-go/internal/handler/allbasiccommon/auth"
+	er "github.com/munaja/blog-practice-be-using-go/internal/handler/allbasiccommon/errors"
+	"github.com/munaja/blog-practice-be-using-go/internal/handler/allbasiccommon/home"
+	mu "github.com/munaja/blog-practice-be-using-go/internal/model/user"
 )
 
 func SetRoutes() http.Handler {

@@ -1,4 +1,4 @@
-module github.com/munaja/blog-be-in-go
+module github.com/munaja/blog-practice-be-using-go
 
 go 1.21
 

@@ -8,7 +8,7 @@ import (
 	dg "github.com/karincake/apem/databasegorm"
 	"gorm.io/gorm"
 
-	m "github.com/munaja/blog-be-in-go/internal/model/usertoken"
+	m "github.com/munaja/blog-practice-be-using-go/internal/model/usertoken"
 )
 
 // non db-storing

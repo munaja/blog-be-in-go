@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	lh "github.com/munaja/blog-be-in-go/pkg/langhelper"
+	lh "github.com/munaja/blog-practice-be-using-go/pkg/langhelper"
 )
 
 func errorResponse(w http.ResponseWriter, r *http.Request, status int, message interface{}) {

@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/karincake/apem"
 
-	"github.com/munaja/blog-be-in-go/internal/handler/customer"
+	"github.com/munaja/blog-practice-be-using-go/internal/handler/customer"
 )
 
 func main() {

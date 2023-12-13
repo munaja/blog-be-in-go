@@ -1,0 +1,2 @@
+# convention
+Key - value data indexed. Key prefered to be be consisting of 3 part: [feature]-[action]-[status]. Special case for validation that is intended to point error on an input (field), the key can be stated directly to the validation index, for example: min is for minimum value needed. 

@@ -11,6 +11,8 @@ import (
 	"github.com/munaja/blog-practice-be-using-go/internal/handler/allbasiccommon/auth"
 	er "github.com/munaja/blog-practice-be-using-go/internal/handler/allbasiccommon/errors"
 	"github.com/munaja/blog-practice-be-using-go/internal/handler/allbasiccommon/home"
+	"github.com/munaja/blog-practice-be-using-go/internal/handler/customer/blog"
+	bo "github.com/munaja/blog-practice-be-using-go/internal/handler/customer/blog-om"
 	"github.com/munaja/blog-practice-be-using-go/internal/handler/customer/profile"
 	profileom "github.com/munaja/blog-practice-be-using-go/internal/handler/customer/profile-om"
 	mu "github.com/munaja/blog-practice-be-using-go/internal/model/user"
@@ -57,6 +59,20 @@ func SetRoutes() http.Handler {
 		r.Use(auth.GuardMW)
 		r.Get("/", profileom.GetDetail)
 		r.Patch("/", profileom.Update)
+	})
+
+	r.Route("/blog", func(r chi.Router) {
+		r.Get("/", blog.GetList)
+		r.Get("/{id}", blog.GetDetail)
+	})
+
+	r.Route("/blog-om", func(r chi.Router) {
+		r.Use(auth.GuardMW)
+		r.Post("/", bo.Create)
+		r.Patch("/{id}", bo.Update)
+		r.Delete("/{id}", bo.Delete)
+		r.Get("/", bo.GetList)
+		r.Get("/{id}", bo.GetDetail)
 	})
 
 	return r

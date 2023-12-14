@@ -11,6 +11,8 @@ import (
 	"github.com/munaja/blog-practice-be-using-go/internal/handler/allbasiccommon/auth"
 	er "github.com/munaja/blog-practice-be-using-go/internal/handler/allbasiccommon/errors"
 	"github.com/munaja/blog-practice-be-using-go/internal/handler/allbasiccommon/home"
+	"github.com/munaja/blog-practice-be-using-go/internal/handler/customer/profile"
+	profileom "github.com/munaja/blog-practice-be-using-go/internal/handler/customer/profile-om"
 	mu "github.com/munaja/blog-practice-be-using-go/internal/model/user"
 )
 
@@ -45,6 +47,16 @@ func SetRoutes() http.Handler {
 		r.Use(auth.GuardMW)
 		r.Patch("/change-password", accountom.ChangePassword)
 		r.Get("/", accountom.GetDetail)
+	})
+
+	r.Route("/profile", func(r chi.Router) {
+		r.Get("/{user_name}", profile.GetDetail)
+	})
+
+	r.Route("/profile-om", func(r chi.Router) {
+		r.Use(auth.GuardMW)
+		r.Get("/", profileom.GetDetail)
+		r.Patch("/", profileom.Update)
 	})
 
 	return r

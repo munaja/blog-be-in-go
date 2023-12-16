@@ -53,10 +53,12 @@ type ResendEmailConfirmDto struct {
 }
 
 type LoginDto struct {
-	Name     string   `json:"name" validate:"required"`
-	Password string   `json:"password" validate:"required"`
-	LongTerm bool     `json:"longTerm"`
-	Position Position `json:"-"`
+	Name        string   `json:"name" validate:"required"`
+	Password    string   `json:"password" validate:"required"`
+	Duration    string   `json:"duration"` // Format: "[val]-[unit]", where val is int, and accepted units are: m (minute), h (hour), d (day), month. Any error format will results in 24 hours of duration
+	OptStatus   *bool    `json:"-"`
+	OwnerStatus *bool    `json:"-"`
+	Position    Position `json:"-"`
 }
 
 type FilterDto struct {

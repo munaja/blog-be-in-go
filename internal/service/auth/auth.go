@@ -73,25 +73,33 @@ func GenToken(input mu.LoginDto) (any, error) {
 	if err != nil {
 		panic(fmt.Sprintf(l.I.Msg("uuid-gen-fail"), err))
 	}
-	duration := time.Hour * 24
-	if input.LongTerm {
-		duration = time.Hour * 24 * 30
-	}
 	aUuid := id.String()
+
+	// calculate
+	durations := strings.Split(strings.ToLower(input.Duration), "-")
+	duration := time.Hour * 24
+	if len(durations) == 2 {
+		val, err := strconv.Atoi(durations[0])
+		if err == nil {
+			if durations[1] == "m" {
+				duration = time.Minute * time.Duration(val)
+			} else if durations[1] == "h" {
+				duration = time.Hour * time.Duration(val)
+			} else if durations[1] == "d" {
+				duration = time.Hour * 24 * time.Duration(val)
+			}
+		}
+	}
 	atExpires := time.Now().Add(duration).Unix()
+
+	// key
 	atSecretKey := viper.GetString("authConf.atSecretKey")
+
 	// Creating Access Token
 	atClaims := jwt.MapClaims{}
 	atClaims["user_id"] = user.Id
 	atClaims["user_name"] = user.Name
 	atClaims["user_email"] = user.Email
-	boolTrue := true
-	if user.OptStatus == &boolTrue {
-		atClaims["optStatus"] = true
-	}
-	if user.OwnerStatus == &boolTrue {
-		atClaims["optStatus"] = true
-	}
 	atClaims["exp"] = atExpires
 	atClaims["uuid"] = aUuid
 	at := jwt.NewWithClaims(jwt.SigningMethodHS256, atClaims)

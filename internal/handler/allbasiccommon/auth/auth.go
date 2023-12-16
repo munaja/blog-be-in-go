@@ -21,6 +21,12 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	input.Position = Position
+	boolTrue := true
+	if Position == m.UPOperator {
+		input.OptStatus = &boolTrue
+	} else if Position == m.UPOwner {
+		input.OwnerStatus = &boolTrue
+	}
 	res, err := s.GenToken(input)
 	if err != nil {
 		hh.WriteJSON(w, http.StatusUnauthorized, td.II{"errors": err}, nil)

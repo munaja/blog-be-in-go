@@ -25,7 +25,7 @@ func ChangePassword(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res, err := sac.ChangePassword(authInfo.User_Id, input)
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }
 
 func GetDetail(w http.ResponseWriter, r *http.Request) {

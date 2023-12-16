@@ -2,10 +2,13 @@ package blog
 
 import (
 	"errors"
+	"strconv"
 
 	sc "github.com/jinzhu/copier"
 	dg "github.com/karincake/apem/databasegorm"
 	l "github.com/karincake/apem/lang"
+	g "github.com/karincake/getuk"
+	td "github.com/karincake/tempe/data"
 	te "github.com/karincake/tempe/error"
 	"gorm.io/gorm"
 
@@ -104,11 +107,55 @@ func Delete(id int, dto m.DeleteDto) (*string, error) {
 	return &msg, nil
 }
 
-func GetList(dto m.ListFilterDto) {
+func GetList(dto m.ListFilterDto) (*td.Data, error) {
+	var data []m.Blog
+	var count int64
 
+	var pagination g.Pagination
+	result := dg.I.
+		Model(&m.Blog{}).
+		Scopes(g.Filter(dto)).
+		Count(&count).
+		Scopes(g.Paginate(dto, &pagination)).
+		Find(&data)
+
+	if result.Error != nil {
+		ed := sh.Event{
+			Feature: "blog",
+			Action:  "get-list",
+			Source:  source,
+			Status:  "failed",
+			ECode:   "data-create-fail",
+			EDetail: result.Error.Error(),
+		}
+		return nil, sh.SetError(ed, data)
+	}
+
+	return &td.Data{
+		Meta: td.IS{
+			"totalCount":   strconv.Itoa(int(count)),
+			"currentCount": strconv.Itoa(int(result.RowsAffected)),
+			"page":         strconv.Itoa(pagination.Page),
+			"pageSize":     strconv.Itoa(pagination.PageSize),
+		},
+		Data: data,
+	}, nil
 }
 
-func GetDetail(id int, dto m.ListFilterDto) {
+func GetDetail(id int, dto m.DetailFilterDto) (*td.Data, error) {
+	data := &m.Blog{}
+
+	result := dg.I.
+		Where("Id = ? ", id).
+		Scopes(g.Filter(dto)).
+		First(data)
+	if result.Error != nil {
+		return nil, returnFetchError(result.Error)
+	}
+
+	return &td.Data{
+		Data: data,
+	}, nil
 
 }
 

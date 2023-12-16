@@ -7,8 +7,8 @@ require (
 	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/google/uuid v1.5.0
 	github.com/jinzhu/copier v0.4.0
-	github.com/karincake/apem v0.0.12-20231213-a
-	github.com/karincake/getuk v0.0.1
+	github.com/karincake/apem v0.0.12
+	github.com/karincake/getuk v0.0.2
 	github.com/karincake/tempe v0.0.8
 	github.com/spf13/viper v1.18.1
 	go.uber.org/zap v1.26.0

@@ -18,7 +18,7 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res, err := sac.Register(input)
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }
 
 func ConfirmByEmail(w http.ResponseWriter, r *http.Request) {
@@ -28,7 +28,7 @@ func ConfirmByEmail(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res, err := sac.ConfirmByEmail(input)
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }
 
 func ResendConfirmationEmail(w http.ResponseWriter, r *http.Request) {
@@ -38,7 +38,7 @@ func ResendConfirmationEmail(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res, err := sac.ResendConfirmationEmail(input)
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }
 
 func ChangePassword(w http.ResponseWriter, r *http.Request) {
@@ -55,7 +55,7 @@ func ChangePassword(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res, err := sac.ChangePassword(authInfo.User_Id, input)
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }
 
 func RequestResetPassword(w http.ResponseWriter, r *http.Request) {
@@ -65,7 +65,7 @@ func RequestResetPassword(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res, err := sac.RequestResetPass(input)
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }
 
 func CheckResetPassword(w http.ResponseWriter, r *http.Request) {
@@ -75,7 +75,7 @@ func CheckResetPassword(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res, err := sac.CheckResetPass(input)
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }
 
 func ResetPassword(w http.ResponseWriter, r *http.Request) {
@@ -89,7 +89,7 @@ func ResetPassword(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res, err := sac.ResetPass(input1, input2)
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }
 
 func Check(w http.ResponseWriter, r *http.Request) {

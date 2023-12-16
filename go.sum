@@ -37,10 +37,10 @@ github.com/jinzhu/inflection v1.0.0 h1:K317FqzuhWc8YvSVlFMCCUb36O/S9MCKRDI7QkRKD
 github.com/jinzhu/inflection v1.0.0/go.mod h1:h+uFLlag+Qp1Va5pdKtLDYj+kHp5pxUVkryuEj+Srlc=
 github.com/jinzhu/now v1.1.5 h1:/o9tlHleP7gOFmsnYNz3RGnqzefHA47wQpKrrdTIwXQ=
 github.com/jinzhu/now v1.1.5/go.mod h1:d3SSVoowX0Lcu0IBviAWJpolVfI5UJVZZ7cO71lE/z8=
-github.com/karincake/apem v0.0.12-20231213-a h1:MSpr1GGgqt3trM2DjiE5jQYhxHteP8JRs0Z/IgVXn1s=
-github.com/karincake/apem v0.0.12-20231213-a/go.mod h1:pCaaXkx6OkODp9zY41o2uQYPePZ18SARrXCwJtF1cmo=
-github.com/karincake/getuk v0.0.1 h1:KBpY7IzNpVi4p2kqyWarWzk15QE5PP+qb+q0GlH06uI=
-github.com/karincake/getuk v0.0.1/go.mod h1:NVnvxSGAkQ/xuq99FzWACvY5efyKPLFla1cKB8czm7c=
+github.com/karincake/apem v0.0.12 h1:xG9sjLhTKqfhWrVAvF77uWa6vvYRA8MUULMCC06nLik=
+github.com/karincake/apem v0.0.12/go.mod h1:LkBodrSnXu3t6G10mdFl5DwoJ/ms4ShLz1k+pTzk2lM=
+github.com/karincake/getuk v0.0.2 h1:j8LsfuTuCmpX4U7T7CW08CAS2VFdXRkCLEw3z95H1LU=
+github.com/karincake/getuk v0.0.2/go.mod h1:NVnvxSGAkQ/xuq99FzWACvY5efyKPLFla1cKB8czm7c=
 github.com/karincake/semprit v0.0.2 h1:54g3s6aK19z11O1+Wbx1s0RWnD9vY6CC4WfNj7cXlwI=
 github.com/karincake/semprit v0.0.2/go.mod h1:BRDYKjUqxMYnXnYaKjYPiNx9Q/VfoN8JrxAdZeGrsDQ=
 github.com/karincake/serabi v0.0.9 h1:oQeISr14Po7tAbAPJQhNTlkbRbaOlntHtsVdGBSmN/4=

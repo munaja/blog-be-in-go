@@ -16,5 +16,5 @@ func GetDetail(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res, err := s.GetDetail(user_name)
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }

@@ -25,7 +25,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		hh.WriteJSON(w, http.StatusUnauthorized, td.II{"errors": err}, nil)
 	} else {
-		hh.DataResponse(w, res, nil, nil, nil)
+		hh.DataResponse(w, res, nil)
 	}
 }
 

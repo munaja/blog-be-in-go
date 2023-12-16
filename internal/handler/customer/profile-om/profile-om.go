@@ -19,7 +19,7 @@ func GetDetail(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res, err := s.GetDetail(authInfo.User_Name, "of-mine")
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }
 
 func Update(w http.ResponseWriter, r *http.Request) {
@@ -36,5 +36,5 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	}
 
 	res, err := s.Update(authInfo.User_Name, payload)
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }

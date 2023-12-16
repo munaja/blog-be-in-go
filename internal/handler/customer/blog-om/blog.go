@@ -40,7 +40,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 		res, err = s.Create(input)
 	}
 
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }
 
 func Update(w http.ResponseWriter, r *http.Request) {
@@ -77,7 +77,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		res, err = s.Update(id, input)
 	}
 
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }
 
 func Delete(w http.ResponseWriter, r *http.Request) {
@@ -95,12 +95,43 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 
 	input := m.DeleteDto{User_Id: &authInfo.User_Id}
 	res, err := s.Delete(id, input)
-
-	hh.DataResponse(w, res, err, nil, nil)
+	hh.DataResponse(w, res, err)
 }
 
 func GetList(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	authInfo, ok := ctx.Value("authInfo").(*sau.AuthInfo)
+	if !ok {
+		hh.WriteJSON(w, http.StatusUnauthorized, nil, nil)
+		return
+	}
+
+	input := m.ListFilterDto{
+		Title_Opt: "left",
+	}
+	if hh.ValidateStructByURL(w, *r.URL, &input) == false {
+		return
+	}
+
+	input.User_Id = &authInfo.User_Id
+	res, err := s.GetList(input)
+	hh.DataResponse(w, res, err)
 }
 
 func GetDetail(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	authInfo, ok := ctx.Value("authInfo").(*sau.AuthInfo)
+	if !ok {
+		hh.WriteJSON(w, http.StatusUnauthorized, nil, nil)
+		return
+	}
+
+	id := hh.ValidateInt(w, "id", chi.URLParam(r, "id"))
+	if id <= 0 {
+		return
+	}
+
+	input := m.DetailFilterDto{User_Id: &authInfo.User_Id}
+	res, err := s.GetDetail(id, input)
+	hh.DataResponse(w, res, err)
 }

@@ -60,13 +60,15 @@ type DeleteDto struct {
 }
 
 type ListFilterDto struct {
-	User_Id          *int    `json:"user_id"`
-	Title            *string `json:"title"`
-	Title_Opt        *string `json:"title_opt"`
-	CategoryTags     *string `json:"categoryTags"`
-	CategoryTags_Opt *string `json:"categoryTags_opt"`
-	Status           Status  `json:"-"`
+	User_Id          *int   `json:"user_id"`
+	Title            string `json:"title"`
+	Title_Opt        string `json:"title_opt"`
+	CategoryTags     string `json:"categoryTags"`
+	CategoryTags_Opt string `json:"categoryTags_opt"`
+	Status           Status `json:"-"`
 	CreateAt         time.Time
+	Page             int `json:"page"`
+	PageSize         int `json:"pagesize"`
 }
 
 type DetailFilterDto struct {

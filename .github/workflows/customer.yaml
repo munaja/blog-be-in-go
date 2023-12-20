@@ -5,11 +5,15 @@ name: Go
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: [ "feat/cicd" ]
 
 jobs:
   container-job:
     runs-on: ubuntu-latest
+
+  build:
+    runs-on: ubuntu-latest
+
     services:
       mariadb:
         image: mariadb
@@ -25,8 +29,6 @@ jobs:
         ports:
           - 6379:6379
 
-  build:
-    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
 

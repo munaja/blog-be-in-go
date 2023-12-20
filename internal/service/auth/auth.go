@@ -40,26 +40,26 @@ func GenToken(input mu.LoginDto) (any, error) {
 		return nil, te.XErrors{"authentication": te.XError{Code: errCode, Message: lh.ErrorMsgGen(errCode)}}
 	}
 
-	if *&user.LoginAttemptCount > 5 {
+	if *&user.FailedLoginAttemptCount > 5 {
 		if &user.LastSuccessLogin != nil {
 			now := time.Now()
-			lastAllowdLogin := user.LastAllowdLogin
-			if lastAllowdLogin.After(now.Add(-time.Hour * 1)) {
+			LastAllowedLogin := user.LastAllowedLogin
+			if LastAllowedLogin.After(now.Add(-time.Hour * 1)) {
 				return nil, te.XErrors{"authentication": te.XError{Code: "auth-login-tooMany", Message: lh.ErrorMsgGen("auth-login-tooMany")}}
 			} else {
-				user.LastAllowdLogin = time.Now()
-				user.LoginAttemptCount = 0
+				user.LastAllowedLogin = time.Now()
+				user.FailedLoginAttemptCount = 0
 				dg.I.Save(&user)
 			}
 		} else {
-			user.LastAllowdLogin = time.Now()
+			user.LastAllowedLogin = time.Now()
 			dg.I.Save(&user)
 			return nil, te.XErrors{"authentication": te.XError{Code: "auth-login-tooMany", Message: lh.ErrorMsgGen("auth-login-tooMany")}}
 		}
 	}
 
 	if p.Check(input.Password, *user.Password) == false {
-		user.LoginAttemptCount = user.LoginAttemptCount + 1
+		user.FailedLoginAttemptCount = user.FailedLoginAttemptCount + 1
 		dg.I.Save(&user)
 		return nil, te.XErrors{"authentication": te.XError{Code: "auth-login-incorrect", Message: lh.ErrorMsgGen("auth-login-incorrect")}}
 	} else if *user.Status == mu.USBlocked {
@@ -115,9 +115,9 @@ func GenToken(input mu.LoginDto) (any, error) {
 		panic(fmt.Sprintf(l.I.Msg("redis-store-fail"), err.Error()))
 	}
 
-	user.LoginAttemptCount = 0
+	user.FailedLoginAttemptCount = 0
 	user.LastSuccessLogin = time.Now()
-	user.LastAllowdLogin = time.Now()
+	user.LastAllowedLogin = time.Now()
 	dg.I.Save(&user)
 
 	// Current data

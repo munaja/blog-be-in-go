@@ -17,7 +17,7 @@ jobs:
           MARIADB_USER: santo
           MARIADB_PASSWORD: sembodo
           MARIADB_ROOT_PASSWORD: sujiwo-tejo
-          MARIADB_DATABASE: blog-be-using-go
+          MARIADB_DATABASE: blog-parctice-be-using-go
         ports:
           - 3306:3306
       redis:
@@ -33,12 +33,17 @@ jobs:
       with:
         go-version: '1.20'
 
+    - name: Migration
+        cd cmd/adbmigration
+        cp config.yml.ci-test.example config.yaml
+        go run .
+
     - name: Build and run
       run: |
         cd cmd/customer
+        cp config.yml.ci-test.example config.yaml
         go build -v .
         chmod 775 customer
-        cp config.yml.e2e-test.example config.yaml
         ./customer
 
     - name: Test
@@ -46,4 +51,3 @@ jobs:
         go install github.com/karincake/emping
         cd ../../test/e2e
         emping customer-test.yml
-        

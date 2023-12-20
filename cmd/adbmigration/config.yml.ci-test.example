@@ -1,0 +1,5 @@
+name: Migrator
+version: 0.1
+
+dsn: santo:sembodo@tcp(127.0.0.1:3306)/blog-parctice-be-using-go?charset=utf8mb4&parseTime=True&loc=Local
+dialect: mysql

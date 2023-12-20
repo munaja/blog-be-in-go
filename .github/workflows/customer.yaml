@@ -49,6 +49,7 @@ jobs:
 
     - name: Test
       run: |
+        go get github.com/karincake/emping
         go install github.com/karincake/emping
         cd ../../test/e2e
         emping customer-test.yml

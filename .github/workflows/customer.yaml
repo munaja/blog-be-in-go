@@ -45,7 +45,7 @@ jobs:
         cp config.yml.ci-test.example config.yaml
         go build -v .
         chmod 775 customer
-        ./customer
+        ./customer &
 
     - name: Test
       run: |

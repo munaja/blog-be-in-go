@@ -33,6 +33,6 @@ authConf:
 
 resourceConf:
   pubImgUrlPath: /resource/pub-img
-  pubImgUrlPath: /resource/priv-img
+  privImgUrlPath: /resource/priv-img
   pubImgDir: ../../resource/pub-img
   privImgDir: ../../resource/priv-img

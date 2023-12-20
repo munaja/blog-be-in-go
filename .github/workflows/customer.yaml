@@ -1,0 +1,52 @@
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Go
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+    services:
+      mariadb:
+        image: mariadb
+        env:
+          MARIADB_USER: santo
+          MARIADB_PASSWORD: sembodo
+          MARIADB_ROOT_PASSWORD: sujiwo-tejo
+          MARIADB_DATABASE: blog-be-using-go
+        ports:
+          - 3306:3306
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.20'
+
+    - name: Build
+      run: |
+        cd cmd/customer
+        go build -v .
+        chmod 775 customer
+
+    - name: Test
+      run: |
+        cd cmd/customer
+        cp config.yml.e2e-test.example config.yaml
+        customer
+        go install github.com/karincake/emping
+        cd ../../test/e2e
+        emping customer-test.yml
+        

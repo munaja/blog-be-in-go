@@ -13,15 +13,15 @@ type Position int16
 type User struct {
 	Id int `json:"id" gorm:"primaryKey;autoIncrement"`
 	getuk.DateModel
-	Name              string  `json:"name" gorm:"size:100;unique"`
-	Email             string  `json:"email" gorm:"size:100;unique"`
-	Password          *string `json:"password,omitempty" gorm:"size:200"`
-	OptStatus         *bool   `json:"optSatus,omitempty"`
-	OwnerStatus       *bool   `json:"ownerSatus,omitempty"`
-	Status            *Status `json:"status,omitempty"`
-	LoginAttemptCount int
-	LastSuccessLogin  time.Time
-	LastAllowdLogin   time.Time
+	Name                    string  `json:"name" gorm:"size:100;unique"`
+	Email                   string  `json:"email" gorm:"size:100;unique"`
+	Password                *string `json:"password,omitempty" gorm:"size:200"`
+	OptStatus               *bool   `json:"optSatus,omitempty"`
+	OwnerStatus             *bool   `json:"ownerSatus,omitempty"`
+	Status                  *Status `json:"status,omitempty"`
+	FailedLoginAttemptCount int     `json:"-"`
+	LastSuccessLogin        time.Time
+	LastAllowedLogin        time.Time `json:"-"`
 }
 
 type CreateDto struct {

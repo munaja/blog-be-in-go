@@ -18,7 +18,7 @@ langConf:
   srcPath: ../../internal/language/en/language.json
 
 dbConf:
-  dsn: user:password@tcp(127.0.0.1:3306)/blog-parctice-be-using-go?charset=utf8mb4&parseTime=True&loc=Local
+  dsn: santo:sembodo@tcp(127.0.0.1:3306)/blog-parctice-be-using-go?charset=utf8mb4&parseTime=True&loc=Local
   maxOpenConns: 5
   maxIdleConns: 5
   maxIdleTime: 100

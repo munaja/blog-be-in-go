@@ -34,6 +34,7 @@ jobs:
         go-version: '1.20'
 
     - name: Migration
+      run: |
         cd cmd/adbmigration
         cp config.yml.ci-test.example config.yaml
         go run .

@@ -33,17 +33,17 @@ jobs:
       with:
         go-version: '1.20'
 
-    - name: Build
+    - name: Build and run
       run: |
         cd cmd/customer
         go build -v .
         chmod 775 customer
+        ./customer
 
     - name: Test
       run: |
         cd cmd/customer
         cp config.yml.e2e-test.example config.yaml
-        customer
         go install github.com/karincake/emping
         cd ../../test/e2e
         emping customer-test.yml

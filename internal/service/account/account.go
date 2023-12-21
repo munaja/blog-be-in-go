@@ -4,6 +4,7 @@ import (
 	"errors"
 
 	sc "github.com/jinzhu/copier"
+	a "github.com/karincake/apem"
 	dg "github.com/karincake/apem/databasegorm"
 	l "github.com/karincake/apem/lang"
 	te "github.com/karincake/tempe/error"
@@ -66,6 +67,12 @@ func Register(input m.RegisterDto) (any, error) {
 		} else if err := tx.Save(&userToken).Error; err != nil {
 			return err
 		}
+
+		// useful for development
+		if a.Apem.Env == "development" {
+			user.UserToken = append(user.UserToken, userToken)
+		}
+
 		return nil
 	}); err != nil {
 		ed := sh.Event{

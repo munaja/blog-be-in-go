@@ -5,6 +5,8 @@ import (
 	"time"
 
 	"github.com/karincake/getuk"
+
+	mut "github.com/munaja/blog-practice-be-using-go/internal/model/usertoken"
 )
 
 type Status byte
@@ -13,13 +15,14 @@ type Position int16
 type User struct {
 	Id int `json:"id" gorm:"primaryKey;autoIncrement"`
 	getuk.DateModel
-	Name                    string  `json:"name" gorm:"size:100;unique"`
-	Email                   string  `json:"email" gorm:"size:100;unique"`
-	Password                *string `json:"password,omitempty" gorm:"size:200"`
-	OptStatus               *bool   `json:"optSatus,omitempty"`
-	OwnerStatus             *bool   `json:"ownerSatus,omitempty"`
-	Status                  *Status `json:"status,omitempty"`
-	FailedLoginAttemptCount int     `json:"-"`
+	Name                    string          `json:"name" gorm:"size:100;unique"`
+	Email                   string          `json:"email" gorm:"size:100;unique"`
+	Password                *string         `json:"password,omitempty" gorm:"size:200"`
+	OptStatus               *bool           `json:"optSatus,omitempty"`
+	OwnerStatus             *bool           `json:"ownerSatus,omitempty"`
+	Status                  *Status         `json:"status,omitempty"`
+	UserToken               []mut.UserToken `json:"userToken,omitempty" gorm:"foreignKey:User_Email;references:Email"`
+	FailedLoginAttemptCount int             `json:"-"`
 	LastSuccessLogin        time.Time
 	LastAllowedLogin        time.Time `json:"-"`
 }
